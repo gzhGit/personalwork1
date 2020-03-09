@@ -18,12 +18,12 @@ Line::Line(int x1, int y1, int x2, int y2) {
 	//cal paras:k b x special
 	if (x1 == x2) {
 		this->special = 1;
-		this->x = x1;
+		this->x = (double)x1;
 	}
 	else {
 		this->special = 0;
-		this->k = (y2 - y1) / (x2 - x1);
-		this->b = y1 - k * x1;
+		this->k = ((double)y2 - (double)y1) / ((double)x2 - (double)x1);
+		this->b = (double)y1 - k * (double)x1;
 	}
 
 }
@@ -39,7 +39,7 @@ Line::Line(double k, double b) {
 	this->b = b;
 }
 
-Node Line::calCrossover(Line line) {
+/*Node Line::calCrossover(Line line) {
 	if (this->special == 1) {
 		if (line.special == 1) {
 			Node node(0);
@@ -71,7 +71,7 @@ Node Line::calCrossover(Line line) {
 			return node;
 		}
 	}
-}
+}*/
 
 bool Node::operator<(const Node node) const {
 	if (this->x < node.x) {
@@ -174,7 +174,7 @@ vector<Node> Intersect::lineCrossCircle(Line line, Circle circle) {
 			return result;
 		}
 		else {
-			cout << "straight line cross cir!" << endl;
+			//cout << "straight line cross cir!" << endl;
 			double s = sqrt((double)circle.r*circle.r - (double)(line.x - circle.a)*(line.x - circle.a));
 			Node node1(1, line.x, circle.b + s);
 			Node node2(1, line.x, circle.b - s);
@@ -203,6 +203,7 @@ vector<Node> Intersect::lineCrossCircle(Line line, Circle circle) {
 			return result;
 		}
 		else {
+			//cout << "normal line cross cir" << endl;
 			double temp1 = a + b * k - c * k;
 			double temp2 = 1 + k * k;
 			double temp3 = (double)r * r - (double)a * a - (c - b)*(c - b);
@@ -231,26 +232,26 @@ vector<Node> Intersect::circleCrossCircle(Circle c1, Circle c2) {
 	double distance = sqrt((a1 - a2)*(a1 - a2) + (b1 - b2)*(b1 - b2));
 	int r = r1 + r2;
 	if (distance > r) {
-		cout << "no intersects cir by cir" << endl;
+		//cout << "no intersects cir by cir" << endl;
 		Node node(0);
 		result.push_back(node);
 		return result;
 	}
 	else if (distance == r) {
-		cout << "only one cir by cir!" << endl;
+		//cout << "only one cir by cir!" << endl;
 		Line through = Line(a1, b1, a2, b2);
 		vector<Node> temp = lineCrossCircle(through, c1);
 		int i = 0;
 		for (; i < 2; i++) {
 			Node node = temp.at(i);
 
-			int judge_node_x = (((node.x > a1) && (node.x < a2)) ||
-				((node.x > a2) && (node.x < a1)));
-			int judge_node_x_special = (node.x == a1) && (node.x == a2);
+			int judge_node_x = (((node.x > (double)a1) && (node.x < (double)a2)) ||
+				((node.x > (double)a2) && (node.x < (double)a1)));
+			int judge_node_x_special = (node.x == (double)a1) && (node.x == (double)a2);
 
-			int judge_node_y = (((node.y > b1) && (node.x < b2)) ||
-				((node.y > b2) && (node.x < b1)));
-			int judge_node_y_special = (node.y == b1) && (node.y == b2);
+			int judge_node_y = (((node.y > (double)b1) && (node.x < (double)b2)) ||
+				((node.y > (double)b2) && (node.x < (double)b1)));
+			int judge_node_y_special = (node.y == (double)b1) && (node.y == (double)b2);
 		
 			if ((judge_node_x || judge_node_x_special) &&
 				(judge_node_y || judge_node_y_special)) {
@@ -261,7 +262,7 @@ vector<Node> Intersect::circleCrossCircle(Circle c1, Circle c2) {
 		return result;
 	}
 	else {
-		cout << "two cir by cir!" << endl;
+		//cout << "two cir by cir!" << endl;
 		int d1 = -a1 * 2;
 		int d2 = -a2 * 2;
 		int e1 = -b1 * 2;
@@ -341,8 +342,8 @@ int main(int argc, char **argv) {
 		}
 	} 
 	//else return 1;
-	//	strcpy(input, "../Debug/input.txt");
-	//	strcpy(output, "../Debug/output.txt");
+	//	strcpy(input, "../Debug/input4.txt");
+	//	strcpy(output, "../Debug/output4.txt");
 	char inputstring[1024];
 	char firstnum[1024];
 	int numOfLines;
@@ -407,7 +408,7 @@ int main(int argc, char **argv) {
 						result = cal.lineCrossCircle(*(objCross.line), *(obj.circle));
 					}
 					else if (objCross.lineOrCircle == 1) {
-						cout << "circleCrossCircle!" << endl;
+						//cout << "circleCrossCircle!" << endl;
 						result = cal.circleCrossCircle(*(obj.circle), *(objCross.circle));
 					}
 				}
@@ -436,11 +437,13 @@ int main(int argc, char **argv) {
 			}
 		}
 	}
-	set<Node>::iterator it;
+
+	//cout << "all nodes:" << endl;
+	/*set<Node>::iterator it;
 	for (it = nodeSet->begin(); it != nodeSet->end(); it++) {
 		cout << "x:" << it->x << "	";
 		cout << "y:" << it->y << endl;
-	}
+	}*/
 	//int result = nodeVector->size();
 	int result = nodeSet->size();
 	outputFile << result << endl;

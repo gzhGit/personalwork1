@@ -1,0 +1,38 @@
+[2020-03-09 17:39:43] [info] Start Program:
+Path:"intersect.exe"
+Arguments:-i input.txt -o output.txt 
+Working directory: not set.
+Modules: Selected: * Excluded: 
+Sources: Selected: * Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: html 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2020-03-09 17:39:46] [info] Module: E:\gitcodes\personalwork1\bin\intersect.exe is selected because it matches selected pattern: *
+[2020-03-09 17:39:52] [info] Module: C:\Windows\System32\ntdll.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:52] [info] Module: C:\Windows\SysWOW64\ntdll.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:52] [info] Module: C:\Windows\System32\wow64.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:52] [info] Module: C:\Windows\System32\wow64win.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:52] [info] Module: C:\Windows\System32\wow64cpu.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:52] [info] Module: C:\Windows\SysWOW64\kernel32.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:52] [info] Module: C:\Windows\SysWOW64\KernelBase.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:52] [info] Module: C:\Windows\SysWOW64\ucrtbased.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:52] [info] Module: C:\Windows\SysWOW64\vcruntime140d.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:52] [info] Module: C:\Windows\SysWOW64\msvcp140d.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:53] [info] Module: C:\Windows\SysWOW64\kernel.appcore.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:53] [info] Module: C:\Windows\SysWOW64\msvcrt.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:53] [info] Module: C:\Windows\SysWOW64\rpcrt4.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:53] [info] Module: C:\Windows\SysWOW64\sspicli.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:53] [info] Module: C:\Windows\SysWOW64\cryptbase.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:53] [info] Module: C:\Windows\SysWOW64\bcryptprimitives.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:53] [info] Module: C:\Windows\SysWOW64\sechost.dll is selected because it matches selected pattern: *
+[2020-03-09 17:39:54] [info] ----------------------------------------------------
+[2020-03-09 17:39:54] [info] Coverage generated in Folder E:\gitcodes\personalwork1\bin\CoverageReport-2020-03-09-17h39m53s
+[2020-03-09 17:39:54] [info] ----------------------------------------------------
