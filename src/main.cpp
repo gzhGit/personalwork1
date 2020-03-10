@@ -261,7 +261,8 @@ vector<Node> Intersect::circleCrossCircle(Circle c1, Circle c2) {
 		}
 		return result;
 	}
-	else {
+	//
+	else if ((distance < r) && (distance > abs(r1-r2))){
 		//cout << "two cir by cir!" << endl;
 		int d1 = -a1 * 2;
 		int d2 = -a2 * 2;
@@ -286,6 +287,33 @@ vector<Node> Intersect::circleCrossCircle(Circle c1, Circle c2) {
 			shared = Line(k, b);
 		}
 		vector<Node> result = lineCrossCircle(shared, c1);
+		return result;
+	}
+	else if (distance == abs(r1 - r2)) {
+		Line through = Line(a1, b1, a2, b2);
+		vector<Node> temp1 = lineCrossCircle(through, c1);
+		vector<Node> temp2 = lineCrossCircle(through, c2);
+		int i,j;
+		int judge = 0;
+		for (i = 0; i < 2; i++) {
+			Node node1 = temp1.at(i);
+			for (j = 0; j < 2; j++) {
+				Node node2 = temp2.at(j);
+				if ((abs(node1.x-node2.x) < 0.00000001) && (abs(node1.y - node2.y) < 0.00000001)) {
+					result.push_back(node1);
+					judge = 1;
+					break;
+				}	
+			}
+			if (judge == 1) {
+				break;
+			}
+		}
+		return result;
+	}
+	else {
+		Node node = Node(0);
+		result.push_back(node);
 		return result;
 	}
 }
@@ -342,8 +370,8 @@ int main(int argc, char **argv) {
 		}
 	} 
 	//else return 1;
-	//	strcpy(input, "../Debug/input4.txt");
-	//	strcpy(output, "../Debug/output4.txt");
+	//	strcpy(input, "../Debug/input6.txt");
+	//	strcpy(output, "../Debug/output6.txt");
 	char inputstring[1024];
 	char firstnum[1024];
 	int numOfLines;
